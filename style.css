@@ -1,0 +1,17 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: clamp(400px, 60%, 800px);
+    height: 500px;
+}
+
+.gameboard > div {
+    border: 2px solid black;
+}
