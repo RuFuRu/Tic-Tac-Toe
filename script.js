@@ -22,13 +22,10 @@ const gameboard = (() => {
                 counter++;
                 console.log(counter);
             }
-            console.log(gameboardArr.slice(0, 3).includes('X', 3), gameboardArr.slice(0, 3));
-            if (gameboardArr.slice(0, 3).includes('X', 3) ||
-                gameboardArr.slice(3, 6).includes('X', 3) ||
-                gameboardArr.slice(6).includes('X', 3)) {
-                console.log("'X' wins!");
-            }
         });
     }
     return { counter };
 })();
+function getOccurance(array, value) {
+    return array.filter((v) => (v === value)).length;
+}

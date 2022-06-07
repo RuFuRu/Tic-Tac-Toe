@@ -31,7 +31,6 @@ const gameboard = (() => {
 
 
 function getOccurance(array:any[],value:number):number {
-    let count = 0;
     return array.filter((v) => (v === value)).length;
 }
 
