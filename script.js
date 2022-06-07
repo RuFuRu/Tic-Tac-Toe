@@ -3,25 +3,32 @@ const gameboardElement = document.querySelector('.gameboard');
 const gameboardDivs = document.querySelectorAll('.gameboard > div');
 console.log(gameboardDivs);
 const gameboard = (() => {
-    const gameboardArr = ['x', 'O', 'x'];
-    let counter = 1;
+    //"p" in gameboardArr stands for "placeholder"
+    const gameboardArr = ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'];
+    let counter = 0;
+    for (let i = 0; i < gameboardDivs.length; i++) {
+        gameboardDivs[i].addEventListener('click', () => {
+            if (counter % 2 === 0) {
+                gameboardDivs[i].textContent = 'O';
+                gameboardDivs[i].setAttribute('style', 'pointer-events: none');
+                gameboardArr[i] = 'O';
+                counter++;
+                console.log(counter);
+            }
+            else if (counter % 2 !== 0) {
+                gameboardDivs[i].textContent = 'X';
+                gameboardDivs[i].setAttribute('style', 'pointer-events: none');
+                gameboardArr[i] = 'X';
+                counter++;
+                console.log(counter);
+            }
+            console.log(gameboardArr.slice(0, 3).includes('X', 3), gameboardArr.slice(0, 3));
+            if (gameboardArr.slice(0, 3).includes('X', 3) ||
+                gameboardArr.slice(3, 6).includes('X', 3) ||
+                gameboardArr.slice(6).includes('X', 3)) {
+                console.log("'X' wins!");
+            }
+        });
+    }
     return { counter };
 })();
-for (let i = 0; i < gameboardDivs.length; i++) {
-    gameboardDivs[i].addEventListener('click', () => {
-        if (gameboard.counter % 2 === 0) {
-            const circle = document.createElement('p');
-            circle.textContent = "O";
-            gameboardDivs[i].appendChild(circle);
-            gameboardDivs[i].setAttribute('style', 'pointer-events: none');
-            gameboard.counter++;
-        }
-        else if (gameboard.counter % 2 !== 0) {
-            const x = document.createElement('p');
-            x.textContent = "X";
-            gameboardDivs[i].appendChild(x);
-            gameboardDivs[i].setAttribute('style', 'pointer-events: none');
-            gameboard.counter++;
-        }
-    });
-}

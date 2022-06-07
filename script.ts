@@ -3,26 +3,35 @@ const gameboardDivs = document.querySelectorAll('.gameboard > div');
 console.log(gameboardDivs);
 
 const gameboard = (() => {
-    const gameboardArr: string[] = ['x','O','x'];
-    let counter = 1;
+    //"p" in gameboardArr stands for "placeholder"
+    const gameboardArr: string[] = ['p','p','p','p','p','p','p','p','p'];
+    let counter = 0;
+    
+    for(let i = 0; i < gameboardDivs.length; i++) {
+        gameboardDivs[i].addEventListener('click', () => {
+            if(counter % 2 === 0) {
+                gameboardDivs[i].textContent = 'O';
+                gameboardDivs[i].setAttribute('style', 'pointer-events: none');
+                gameboardArr[i] = 'O';
+                counter++;
+                console.log(counter);
+            }
+            else if(counter % 2 !== 0) {
+                gameboardDivs[i].textContent = 'X';
+                gameboardDivs[i].setAttribute('style', 'pointer-events: none');
+                gameboardArr[i] = 'X';
+                counter++;
+                console.log(counter);
+            }
+        })
+    }
+
     return {counter};
 })();
 
-for(let i = 0; i < gameboardDivs.length; i++) {
-    gameboardDivs[i].addEventListener('click', () => {
-        if(gameboard.counter % 2 === 0) {
-            const circle = document.createElement('p');
-            circle.textContent = "O";
-            gameboardDivs[i].appendChild(circle);
-            gameboardDivs[i].setAttribute('style', 'pointer-events: none');
-            gameboard.counter++;
-        }
-        else if(gameboard.counter % 2 !== 0) {
-            const x = document.createElement('p');
-            x.textContent = "X";
-            gameboardDivs[i].appendChild(x);
-            gameboardDivs[i].setAttribute('style', 'pointer-events: none');
-            gameboard.counter++;
-        }
-    })
+
+function getOccurance(array:any[],value:number):number {
+    let count = 0;
+    return array.filter((v) => (v === value)).length;
 }
+
