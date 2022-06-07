@@ -75,6 +75,9 @@ const gameboard = (() => {
                         gameboardDiv.setAttribute('style','pointer-events: none');
                     })
             }
+            else if(getOccurance(gameboardArr,'p') === 0) {
+                console.log("A tie!");
+            }
         })
     }
 
