@@ -22,6 +22,22 @@ const gameboard = (() => {
                 counter++;
                 console.log(counter);
             }
+            if (getOccurance(gameboardArr.slice(0, 3), 'X') === 3 ||
+                getOccurance(gameboardArr.slice(3, 6), 'X') === 3 ||
+                getOccurance(gameboardArr.slice(6), 'X') === 3) {
+                console.log("'X' wins!");
+                gameboardDivs.forEach(gameboardDiv => {
+                    gameboardDiv.setAttribute('style', 'pointer-events: none');
+                });
+            }
+            else if (getOccurance(gameboardArr.slice(0, 3), 'O') === 3 ||
+                getOccurance(gameboardArr.slice(3, 6), 'O') === 3 ||
+                getOccurance(gameboardArr.slice(6), 'O') === 3) {
+                console.log("'O' wins!");
+                gameboardDivs.forEach(gameboardDiv => {
+                    gameboardDiv.setAttribute('style', 'pointer-events: none');
+                });
+            }
         });
     }
     return { counter };
