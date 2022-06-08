@@ -3,7 +3,7 @@ const gameboardElement = document.querySelector('.gameboard');
 const gameboardDivs = document.querySelectorAll('.gameboard > div');
 console.log(gameboardDivs);
 const gameboard = (() => {
-    //"p" in gameboardArr stands for "placeholder"
+    //"p" in gameboardArrs stands for "placeholder"
     const gameboardArr = ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'];
     const gameboardArrFirstCol = ['p', 'p', 'p'];
     const gameboardArrSecondCol = ['p', 'p', 'p'];
