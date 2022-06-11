@@ -48,5 +48,18 @@ h1 {
     font-weight: 600;
     margin-top: 2rem;
     color: hsl(0, 86%, 36%);
-    /*color: hsl(241, 73%, 46%);*/
+}
+
+.victory {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.3rem;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+
+.tie { 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.3rem;
+    font-weight: 600;
+    margin-top: 2rem;
 }

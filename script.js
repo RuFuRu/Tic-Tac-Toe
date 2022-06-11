@@ -1,7 +1,7 @@
 "use strict";
 const gameboardElement = document.querySelector('.gameboard');
 const gameboardDivs = document.querySelectorAll('.gameboard > div');
-const turnInfo = document.querySelector('.turn-info');
+const belowGameboardPara = document.querySelector('.turn-info');
 console.log(gameboardDivs);
 const gameboard = (() => {
     //"p" in gameboardArrs stands for "placeholder"
@@ -17,8 +17,8 @@ const gameboard = (() => {
             if (counter % 2 === 0) {
                 const circle = document.createElement('p');
                 circle.textContent = 'O';
-                turnInfo.textContent = "X's turn";
-                turnInfo.setAttribute('style', 'color: hsl(241, 73%, 46%);');
+                belowGameboardPara.textContent = "X's turn";
+                belowGameboardPara.setAttribute('style', 'color: hsl(241, 73%, 46%);');
                 gameboardDivs[i].setAttribute('style', 'pointer-events: none');
                 gameboardDivs[i].appendChild(circle);
                 gameboardArr[i] = 'O';
@@ -27,8 +27,8 @@ const gameboard = (() => {
             else if (counter % 2 !== 0) {
                 const x = document.createElement('p');
                 x.textContent = 'X';
-                turnInfo.textContent = "O's turn";
-                turnInfo.setAttribute('style', 'color: hsl(0, 86%, 36%);');
+                belowGameboardPara.textContent = "O's turn";
+                belowGameboardPara.setAttribute('style', 'color: hsl(0, 86%, 36%);');
                 gameboardDivs[i].setAttribute('style', 'pointer-events: none');
                 gameboardDivs[i].appendChild(x);
                 gameboardArr[i] = 'X';
@@ -58,7 +58,8 @@ const gameboard = (() => {
                 getOccurance(gameboardArrThirdCol, 'X') === 3 ||
                 getOccurance(gameboardArrDiagonalFirst, 'X') === 3 ||
                 getOccurance(gameboardArrDiagonalSecond, 'X') === 3) {
-                console.log("'X' wins!");
+                belowGameboardPara.classList.replace('turn-info', 'victory');
+                belowGameboardPara.textContent = "X has won!";
                 gameboardDivs.forEach(gameboardDiv => {
                     gameboardDiv.setAttribute('style', 'pointer-events: none');
                 });
@@ -71,17 +72,20 @@ const gameboard = (() => {
                 getOccurance(gameboardArrThirdCol, 'O') === 3 ||
                 getOccurance(gameboardArrDiagonalFirst, 'O') === 3 ||
                 getOccurance(gameboardArrDiagonalSecond, 'O') === 3) {
-                console.log("'O' wins!");
+                belowGameboardPara.classList.replace('turn-info', 'victory');
+                belowGameboardPara.textContent = "O has won!";
                 gameboardDivs.forEach(gameboardDiv => {
                     gameboardDiv.setAttribute('style', 'pointer-events: none');
                 });
             }
             else if (getOccurance(gameboardArr, 'p') === 0) {
-                console.log("A tie!");
+                belowGameboardPara.classList.replace('turn-info', 'tie');
+                belowGameboardPara.setAttribute('style', 'color: black');
+                belowGameboardPara.textContent = "A tie!";
             }
         });
     }
-    return { counter };
+    return {};
 })();
 function getOccurance(array, value) {
     return array.filter((v) => (v === value)).length;
