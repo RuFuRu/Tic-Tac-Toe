@@ -1,6 +1,7 @@
 "use strict";
 const gameboardElement = document.querySelector('.gameboard');
 const gameboardDivs = document.querySelectorAll('.gameboard > div');
+const turnInfo = document.querySelector('.turn-info');
 console.log(gameboardDivs);
 const gameboard = (() => {
     //"p" in gameboardArrs stands for "placeholder"
@@ -16,15 +17,18 @@ const gameboard = (() => {
             if (counter % 2 === 0) {
                 const circle = document.createElement('p');
                 circle.textContent = 'O';
+                turnInfo.textContent = "X's turn";
+                turnInfo.setAttribute('style', 'color: hsl(241, 73%, 46%);');
                 gameboardDivs[i].setAttribute('style', 'pointer-events: none');
                 gameboardDivs[i].appendChild(circle);
                 gameboardArr[i] = 'O';
                 counter++;
-                console.log(counter);
             }
             else if (counter % 2 !== 0) {
                 const x = document.createElement('p');
                 x.textContent = 'X';
+                turnInfo.textContent = "O's turn";
+                turnInfo.setAttribute('style', 'color: hsl(0, 86%, 36%);');
                 gameboardDivs[i].setAttribute('style', 'pointer-events: none');
                 gameboardDivs[i].appendChild(x);
                 gameboardArr[i] = 'X';
