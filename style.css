@@ -1,8 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400&display=swap');
+
+*,*::after,*::before {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
 body {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    background: linear-gradient(to right, #e0eafc, #cfdef3);
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 5rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 4rem;
+    font-size: 1.3rem;
 }
 
 .gameboard {
