@@ -1,3 +1,4 @@
+const body = document.querySelector('body') as HTMLBodyElement;
 const gameboardElement = document.querySelector('.gameboard') as HTMLDivElement;
 const gameboardDivs = document.querySelectorAll('.gameboard > div');
 const belowGameboardPara = document.querySelector('.turn-info') as HTMLParagraphElement;
@@ -12,6 +13,11 @@ const gameboard = (() => {
     const gameboardArrDiagonalFirst: string[] = ['p','p','p'];
     const gameboardArrDiagonalSecond: string[] = ['p','p','p'];
     let counter = 0;
+
+    const retry = document.createElement('p');
+    retry.textContent = "Retry ?";
+    retry.classList.add('retry');
+    retry.addEventListener('click', () => location.reload());
     
     for(let i = 0; i < gameboardDivs.length; i++) {
         gameboardDivs[i].addEventListener('click', () => {
@@ -67,9 +73,10 @@ const gameboard = (() => {
                getOccurance(gameboardArrThirdCol,'X') === 3       ||
                getOccurance(gameboardArrDiagonalFirst,'X') === 3  ||
                getOccurance(gameboardArrDiagonalSecond,'X') === 3) {
-                belowGameboardPara.classList.replace('turn-info', 'victory');
+                belowGameboardPara.classList.replace('turn-info', 'below-gameboard-para');
                 belowGameboardPara.setAttribute('style', 'color: hsl(241, 73%, 46%);');
-                belowGameboardPara.textContent = "X has won!"
+                belowGameboardPara.textContent = "X has won!";
+                body.appendChild(retry);
                 gameboardDivs.forEach(gameboardDiv => {
                     gameboardDiv.setAttribute('style','pointer-events: none');
                 })
@@ -82,17 +89,19 @@ const gameboard = (() => {
                     getOccurance(gameboardArrThirdCol,'O') === 3       ||
                     getOccurance(gameboardArrDiagonalFirst,'O') === 3  ||
                     getOccurance(gameboardArrDiagonalSecond,'O') === 3) {
-                     belowGameboardPara.classList.replace('turn-info', 'victory');
+                     belowGameboardPara.classList.replace('turn-info', 'below-gameboard-para');
                      belowGameboardPara.setAttribute('style', 'color: hsl(0, 86%, 36%);');
-                     belowGameboardPara.textContent = "O has won!"
+                     belowGameboardPara.textContent = "O has won!";
+                     body.appendChild(retry);
                      gameboardDivs.forEach(gameboardDiv => {
                         gameboardDiv.setAttribute('style','pointer-events: none');
                     })
             }
             else if(getOccurance(gameboardArr,'p') === 0) {
-                belowGameboardPara.classList.replace('turn-info', 'tie');
+                belowGameboardPara.classList.replace('turn-info', 'below-gameboard-para');
                 belowGameboardPara.setAttribute('style', 'color: black');
-                belowGameboardPara.textContent = "A tie!"
+                belowGameboardPara.textContent = "A tie!";
+                body.appendChild(retry);
             }
         })
     }
