@@ -7,6 +7,10 @@
     font-weight: 300;
 }
 
+:root {
+    --gameboard-border: hsl(0, 0%, 75%);
+}
+
 body {
     height: 100vh;
     display: flex;
@@ -36,10 +40,43 @@ h1 {
 }
 
 .gameboard > div {
-    border: 2px solid black;
     display: grid;
     justify-content: center;
     align-items: center;
+}
+
+.gameboard > div:nth-child(1), 
+.gameboard > div:nth-child(2), 
+.gameboard > div:nth-child(4),  
+.gameboard > div:nth-child(5) {
+    border-right: 5px solid var(--gameboard-border);
+    border-bottom: 5px solid var(--gameboard-border);
+}
+
+.gameboard > div:nth-child(3), 
+.gameboard > div:nth-child(6) {
+    border-bottom: 5px solid var(--gameboard-border);
+}
+
+.gameboard > div:nth-child(7) {
+    border-right: 5px solid var(--gameboard-border);
+}
+
+.gameboard > div:nth-child(8) {
+    border-right: 5px solid var(--gameboard-border);
+}
+
+
+.gameboard-para-O {
+    font-size: 5rem;
+    font-weight: 400;
+    color: hsl(0, 86%, 36%);
+}
+
+.gameboard-para-X {
+    font-size: 5rem;
+    font-weight: 400;
+    color: hsl(241, 73%, 46%);
 }
 
 .turn-info {

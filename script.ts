@@ -18,6 +18,7 @@ const gameboard = (() => {
             if(counter % 2 === 0) {
                 const circle = document.createElement('p');
                 circle.textContent = 'O';
+                circle.classList.add('gameboard-para-O');
                 belowGameboardPara.textContent = "X's turn";
                 belowGameboardPara.setAttribute('style', 'color: hsl(241, 73%, 46%);');
                 gameboardDivs[i].setAttribute('style', 'pointer-events: none');
@@ -28,6 +29,7 @@ const gameboard = (() => {
             else if(counter % 2 !== 0) {
                 const x = document.createElement('p');
                 x.textContent = 'X';
+                x.classList.add('gameboard-para-X');
                 belowGameboardPara.textContent = "O's turn";
                 belowGameboardPara.setAttribute('style', 'color: hsl(0, 86%, 36%);');
                 gameboardDivs[i].setAttribute('style', 'pointer-events: none');
@@ -66,6 +68,7 @@ const gameboard = (() => {
                getOccurance(gameboardArrDiagonalFirst,'X') === 3  ||
                getOccurance(gameboardArrDiagonalSecond,'X') === 3) {
                 belowGameboardPara.classList.replace('turn-info', 'victory');
+                belowGameboardPara.setAttribute('style', 'color: hsl(241, 73%, 46%);');
                 belowGameboardPara.textContent = "X has won!"
                 gameboardDivs.forEach(gameboardDiv => {
                     gameboardDiv.setAttribute('style','pointer-events: none');
@@ -80,6 +83,7 @@ const gameboard = (() => {
                     getOccurance(gameboardArrDiagonalFirst,'O') === 3  ||
                     getOccurance(gameboardArrDiagonalSecond,'O') === 3) {
                      belowGameboardPara.classList.replace('turn-info', 'victory');
+                     belowGameboardPara.setAttribute('style', 'color: hsl(0, 86%, 36%);');
                      belowGameboardPara.textContent = "O has won!"
                      gameboardDivs.forEach(gameboardDiv => {
                         gameboardDiv.setAttribute('style','pointer-events: none');
