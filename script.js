@@ -14,15 +14,19 @@ const gameboard = (() => {
     for (let i = 0; i < gameboardDivs.length; i++) {
         gameboardDivs[i].addEventListener('click', () => {
             if (counter % 2 === 0) {
-                gameboardDivs[i].textContent = 'O';
+                const circle = document.createElement('p');
+                circle.textContent = 'O';
                 gameboardDivs[i].setAttribute('style', 'pointer-events: none');
+                gameboardDivs[i].appendChild(circle);
                 gameboardArr[i] = 'O';
                 counter++;
                 console.log(counter);
             }
             else if (counter % 2 !== 0) {
-                gameboardDivs[i].textContent = 'X';
+                const x = document.createElement('p');
+                x.textContent = 'X';
                 gameboardDivs[i].setAttribute('style', 'pointer-events: none');
+                gameboardDivs[i].appendChild(x);
                 gameboardArr[i] = 'X';
                 counter++;
                 console.log(counter);
